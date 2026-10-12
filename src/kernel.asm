@@ -1,5 +1,9 @@
 [BITS 32]
-load32:
+global _start
+
+CODE_SEG equ 0x08
+DATA_SEG equ 0x10
+_start:
     mov ax, DATA_SEG
     mov ds, ax
     mov es, ax
@@ -11,7 +15,7 @@ load32:
 
 ; Enable the A20 line (Fast A20 Gate)
     in al, 0x92
-    or al,2
+    or al, 2
     out 0x92, al
 
     jmp $
