@@ -19,6 +19,14 @@ void terminal_putchar(int x, int y, char c, char colour) {
 
 void terminal_writechar(char c, char colour)
 {
+
+ if (c=='\n')
+ {
+    terminal_row += 1;
+    terminal_col = 0;
+    return;
+ }
+
   terminal_putchar(terminal_col, terminal_row, c, colour);
   terminal_col += 1;
 
@@ -27,6 +35,8 @@ void terminal_writechar(char c, char colour)
     terminal_col = 0;
     terminal_row = 1;
   }
+
+  return;
 }
 
 void terminal_initialize(){
@@ -65,6 +75,6 @@ void print(const char* str) {
 void kernel_main()
 {
     terminal_initialize();
-    print("Hello World!");
+    print("Hello World!\ntest");
     
 }
